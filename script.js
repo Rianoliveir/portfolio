@@ -2,7 +2,7 @@
 const botaoTema = document.getElementById("tema");
 if (botaoTema) {
   const raiz = document.documentElement;
-  const atualizar = () => botaoTema.textContent = raiz.dataset.tema === "escuro" ? "Claro" : "Escuro";
+  const atualizar = () => botaoTema.setAttribute("aria-checked", raiz.dataset.tema === "escuro");
   atualizar();
   botaoTema.addEventListener("click", () => {
     raiz.dataset.tema = raiz.dataset.tema === "escuro" ? "claro" : "escuro";

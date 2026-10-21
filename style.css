@@ -14,8 +14,14 @@ a{color:inherit;text-decoration:none}
 .nav .logo{justify-self:center;font-family:var(--display);font-weight:800;font-stretch:112%;font-size:1.5rem;line-height:1;letter-spacing:0;color:var(--cinza)}
 .nav .logo:hover{color:var(--inverso)}
 .nav-dir{display:flex;gap:28px;pointer-events:none;align-items:center;justify-self:end}
-.tema{justify-self:start;pointer-events:auto;background:none;border:0;font:inherit;color:var(--cinza-texto);cursor:pointer;transition:color .2s}
-.tema:hover{color:var(--inverso)}
+.tema{justify-self:start;pointer-events:auto;position:relative;width:56px;height:28px;border:0;border-radius:99px;background:var(--inverso);cursor:pointer;padding:0;transition:transform .2s}
+.tema:hover{transform:scale(1.06)}
+.tema .bola{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--bg);transition:transform .35s cubic-bezier(.6,0,.2,1)}
+.tema .ic{position:absolute;top:7px;width:14px;height:14px;fill:none;stroke:var(--bg);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:opacity .25s}
+.tema .lua{right:8px}.tema .sol{left:8px;opacity:0}
+:root[data-tema="escuro"] .tema .bola{transform:translateX(28px)}
+:root[data-tema="escuro"] .tema .lua{opacity:0}
+:root[data-tema="escuro"] .tema .sol{opacity:1}
 
 /* títulos gigantes */
 .gigante{font-family:var(--display);font-weight:900;font-stretch:125%;text-transform:uppercase;
