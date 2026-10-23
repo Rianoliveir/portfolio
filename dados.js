@@ -32,3 +32,13 @@ const PROJETOS = [
     imagens: ["img/projeto3-a.jpg"]
   }
 ];
+
+// ➜ MÚSICA DO DIA: a cada dia o player toca a próxima música da lista, em ordem.
+// Para adicionar: no Spotify, clique em "Compartilhar → Copiar link da música".
+// O link é parecido com https://open.spotify.com/track/5X69MOmlbEJQA49rwn2tjd?si=...
+// Copie só o código entre "/track/" e o "?" e cole abaixo, entre aspas, separado por vírgula.
+const MUSICAS = [
+  "5X69MOmlbEJQA49rwn2tjd"
+  // , "codigo-da-musica-2"
+  // , "codigo-da-musica-3"
+];
