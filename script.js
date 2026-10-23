@@ -138,12 +138,14 @@ function iniciarPagina() {
 
   const grade = document.getElementById("grade");
   if (grade) {
-    grade.innerHTML = PROJETOS.length ? PROJETOS.map(p => `
-      <a class="card" href="projeto.html?id=${p.id}">
-        <div class="capa"><img src="${p.capa}" alt="Capa do projeto ${p.titulo}" loading="lazy"></div>
-        <h3>${p.titulo}</h3>
-        <p>${p.categoria} · ${p.ano}</p>
-      </a>`).join("") : `<p class="vazio">Nenhum projeto ainda.</p>`;
+    const ESPACOS = 10; // quantidade de quadrados na página de projetos
+    const cards = PROJETOS.slice(0, ESPACOS).map(p => `
+      <a class="card" href="projeto.html?id=${p.id}" aria-label="${p.titulo}">
+        <div class="capa"><img src="${p.capa}" alt="Capa do projeto ${p.titulo}" loading="lazy" onerror="this.remove()"></div>
+        <span class="titulo">${p.titulo}</span>
+      </a>`);
+    while (cards.length < ESPACOS) cards.push(`<div class="card vazio-slot" aria-hidden="true"></div>`);
+    grade.innerHTML = cards.join("");
   }
 
   const detalhe = document.getElementById("detalhe");
