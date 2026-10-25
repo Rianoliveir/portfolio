@@ -36,8 +36,8 @@ const PROJETOS = [
     ano: "2026",
     cliente: "HIGH COMPANY",
     descricao: "Desenvolvimento de produto para HIGH COMPANY.",
-    capa: "img/capa-4.jpg",
-    imagens: [] // ex.: ["img/projeto4-a.jpg", "img/projeto4-b.jpg"]
+    capa: "img/prato.jpg",
+    imagens: ["img/prato.jpg", "img/prato2.jpg", "img/prato3.jpg"] // ex.: ["img/projeto4-a.jpg", "img/projeto4-b.jpg"]
   },
   {
     id: "grafico-strive",
@@ -53,18 +53,20 @@ const PROJETOS = [
     titulo: "Syling para HIGH COMPANY  ",
     ano: "2026",
     cliente: "HIGH COMPANY",
-    descricao: "Trabalho de estilo para HIGH COMPANY.",
-    capa: "img/capa-6.jpg",
-    imagens: [] // ex.: ["img/projeto6-a.jpg", "img/projeto6-b.jpg"]
+    descricao: "Trabalho de estilo para HIGH COMPANY Ficha tecnica: Fotografia:@joshvellis Modelos:@anavoig.aguiar & @sainktt Team: @mfbastos @patylinos @ngo.fs @statickayke @roccondiogo.",
+    capa: "img/otn1.jpeg",
+    imagens: ["img/otn1.jpeg", "img/otn2.jpeg", "img/otn3.jpeg","img/otn4.jpeg", "img/otn5.jpeg", "img/otn6.jpg",
+      "img/otn7.jpg", "img/otn8.jpg", "img/otn9.jpg", "img/otn10.jpg", "img/otn11.jpeg", "img/otn12.jpeg"
+     ] // ex.: ["img/projeto6-a.jpg", "img/projeto6-b.jpg"]
   },
   {
     id: "jamaica-slow-jam-pecas-visuais",
     titulo: "Peças visuais para \"Jamaica Slow Jam\"",
     ano: "2026",
     cliente: "@vulgo7b_",
-    descricao: "Tracklist feito com caneta Bic no verso da obra do artista Trama.Downtowner + capas alternativas do projeto.",
-    capa: "img/capa-7.jpg",
-    imagens: ["img/artealt.png", "img/capasinal.png", "img/carro.png", "img/degrade.png", "img/pintura.png", "img/radio.png", "img/jsjcapa.png", 
+    descricao: "Tracklist feito com caneta Bic no verso da obra do artista Trama.Downtown + capas alternativas do projeto.",
+    capa: "img/trackecapa.jpeg",
+    imagens: ["img/TRACKLIST TITULO.png" , "img/artealt.png", "img/capasinal.png", "img/carro.png", "img/degrade.png", "img/pintura.png", "img/radio.png", "img/jsjcapa.png", 
       "img/bandeiras.png"] // ex.: ["img/projeto7-a.jpg", "img/projeto7-b.jpg"]
   },
   {
@@ -82,17 +84,19 @@ const PROJETOS = [
     ano: "2026",
     cliente: "@spgorganization",
     descricao: "Gráficos para SPG ORG",
-    capa: "img/capa-9.jpg",
-    imagens: [] // ex.: ["img/projeto9-a.jpg", "img/projeto9-b.jpg"]
+    capa: "img/spg1.jpg",
+    imagens: ["img/spg1.jpg", "img/spg2.jpg", "img/spg3.jpg", "img/spg4.jpg", "img/spg5.jpg", "img/spg6.jpg", 
+      "img/spg7.jpg", "img/spg8.jpg", "img/spg9.jpg"
+    ] // ex.: ["img/projeto9-a.png", "img/projeto9-b.png"]
   },
   {
-    id: "projeto-10",
-    titulo: "Projeto 10",
+    id: "Dover Street Market Magazine(concept)",
+    titulo: "Dover Street Market Magazine(concept)",
     ano: "2026",
     cliente: "—",
-    descricao: "Descreva aqui o projeto: objetivo, processo e resultado.",
-    capa: "img/capa-10.jpg",
-    imagens: [] // ex.: ["img/projeto10-a.jpg", "img/projeto10-b.jpg"]
+    descricao: ".",
+    capa: "img/dsm1.png",
+    imagens: ["img/dsm1.png", "img/dsm22.png", "img/dsm33.png"] // ex.: ["img/projeto10-a.jpg", "img/projeto10-b.jpg"]
   }
 ];
 
