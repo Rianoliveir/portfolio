@@ -10,7 +10,7 @@ const PROJETOS = [
     cliente: "HIGH COMPANY",
     descricao: "Desenvolvimento de produto para HIGH COMPANY.",
     capa: "img/conjunto.png",
-    imagens: ["img/conjunto.png", "img/grafico.png" , "img/lookbook.jpeg", "img/fotonocorpo.jpg"] // ex.: ["img/projeto1-a.jpg", "img/projeto1-b.jpg"]
+    imagens: ["img/conjunto.png", "img/grafico.png" , "img/lookbook.jpg", "img/fotonocorpo.jpg"] // ex.: ["img/projeto1-a.jpg", "img/projeto1-b.jpg"]
   },
   {
     id: "grafico-drop-verao1",
@@ -95,8 +95,8 @@ const PROJETOS = [
     ano: "2026",
     cliente: "—",
     descricao: ".",
-    capa: "img/dsm1.png",
-    imagens: ["img/dsm1.png", "img/dsm22.png", "img/dsm33.png"] // ex.: ["img/projeto10-a.jpg", "img/projeto10-b.jpg"]
+    capa: "img/dsm1.jpg",
+    imagens: ["img/dsm1.jpg", "img/dsm22.jpg", "img/dsm33.jpg"] // ex.: ["img/projeto10-a.jpg", "img/projeto10-b.jpg"]
   }
 ];
 
