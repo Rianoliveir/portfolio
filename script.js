@@ -11,6 +11,37 @@ if (botaoTema) {
   });
 }
 
+/* ---------- Plano de fundo: o ícone abre um menu (Normal + imagens) ---------- */
+const botaoFundo = document.getElementById("fundo");
+const menuFundo = document.getElementById("fundos-menu");
+if (botaoFundo && menuFundo) {
+  const raiz = document.documentElement;
+  const opcoes = [...menuFundo.querySelectorAll(".fundo-op")];
+  const marcar = () => {
+    const atual = raiz.dataset.fundo || "";
+    opcoes.forEach(o => o.setAttribute("aria-pressed", String(o.dataset.fundo === atual)));
+  };
+  const abrir = (sim) => {
+    menuFundo.classList.toggle("aberto", sim);
+    botaoFundo.setAttribute("aria-expanded", String(sim));
+  };
+  marcar();
+  botaoFundo.addEventListener("click", () => abrir(!menuFundo.classList.contains("aberto")));
+  opcoes.forEach(o => o.addEventListener("click", () => {
+    const n = o.dataset.fundo;
+    if (n) raiz.dataset.fundo = n; else delete raiz.dataset.fundo;
+    try { n ? localStorage.setItem("fundo", n) : localStorage.removeItem("fundo"); } catch (e) {}
+    marcar();
+    abrir(false);
+  }));
+  document.addEventListener("click", e => {
+    if (menuFundo.classList.contains("aberto") && !menuFundo.contains(e.target) && !botaoFundo.contains(e.target)) abrir(false);
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && menuFundo.classList.contains("aberto")) { abrir(false); botaoFundo.focus(); }
+  });
+}
+
 /* ---------- Player flutuante do Spotify (botão arrastável) ---------- */
 const player = document.getElementById("player");
 if (player) {
@@ -19,12 +50,10 @@ if (player) {
   const frame = player.querySelector("iframe");
   const TAM = 52, MARGEM = 12;
 
-  // Música do dia: troca todo dia, seguindo a lista MUSICAS (dados.js)
-  if (typeof MUSICAS !== "undefined" && MUSICAS.length) {
-    const h = new Date();
-    const dias = Math.floor(Date.UTC(h.getFullYear(), h.getMonth(), h.getDate()) / 86400000);
-    frame.dataset.src = `https://open.spotify.com/embed/track/${MUSICAS[dias % MUSICAS.length]}?utm_source=generator`;
-  }
+  // Playlist do player. Para trocar, mude o código abaixo (ou crie const PLAYLIST = "..." no dados.js)
+  const PLAYLIST_PADRAO = "2ju4wJBuf27lV4EGHZLyc4";
+  const playlist = (typeof PLAYLIST !== "undefined" && PLAYLIST) || PLAYLIST_PADRAO;
+  frame.dataset.src = `https://open.spotify.com/embed/playlist/${playlist}?utm_source=generator`;
 
   const alternar = (abrir) => {
     const aberto = abrir ?? !player.classList.contains("aberto");
@@ -132,6 +161,13 @@ if (player) {
 }
 
 /* ---------- Partes de cada página (rodam de novo a cada troca de página) ---------- */
+// Transforma cada @usuario do texto em link para o Instagram da pessoa
+function linkar(texto) {
+  const seguro = String(texto).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return seguro.replace(/@([A-Za-z0-9_]+(?:\.[A-Za-z0-9_]+)*)/g,
+    '<a href="https://instagram.com/$1" target="_blank" rel="noopener">@$1</a>');
+}
+
 function iniciarPagina() {
   const hora = document.getElementById("hora");
   if (hora) hora.textContent = new Date().toLocaleTimeString("pt-BR", {hour: "2-digit", minute: "2-digit"}) + " horário local";
@@ -159,14 +195,18 @@ function iniciarPagina() {
       const ant = PROJETOS[(i - 1 + PROJETOS.length) % PROJETOS.length];
       const prox = PROJETOS[(i + 1) % PROJETOS.length];
       document.title = `${p.titulo} — Rian Oliveira`;
+      const temCliente = p.cliente && p.cliente.trim() && p.cliente.trim() !== "—";
+      const temDesc = p.descricao && p.descricao.trim().length > 1;
       detalhe.innerHTML = `
         <h1 class="sr">${p.titulo}</h1>
-        <div class="proj-topo">
-          <span>Ano<strong>${p.ano}</strong></span>
-          <span>Cliente<strong>${p.cliente}</strong></span>
-        </div>
-        <p class="proj-desc">${p.descricao}</p>
         <div class="proj-imgs">${p.imagens.map(src => `<img src="${src}" alt="${p.titulo}" loading="lazy">`).join("")}</div>
+        <div class="proj-info">
+          <div class="proj-topo">
+            <span>Ano<strong>${p.ano}</strong></span>
+            ${temCliente ? `<span>Cliente<strong>${linkar(p.cliente)}</strong></span>` : ""}
+          </div>
+          ${temDesc ? `<p class="proj-desc">${linkar(p.descricao)}</p>` : ""}
+        </div>
         <nav class="proj-nav" aria-label="Outros projetos">
           <a href="projeto.html?id=${encodeURIComponent(ant.id)}">← ${ant.titulo}</a>
           <a href="projeto.html?id=${encodeURIComponent(prox.id)}">${prox.titulo} →</a>

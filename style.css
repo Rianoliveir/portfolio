@@ -28,6 +28,8 @@ a{color:inherit;text-decoration:none}
 :root[data-tema="escuro"] .tema .lua{opacity:0}
 :root[data-tema="escuro"] .tema .sol{opacity:1}
 
+.nav button.icone{pointer-events:auto;border:0;background:none;padding:0;cursor:pointer;font:inherit}
+
 /* títulos gigantes */
 .gigante{font-family:var(--display);font-weight:900;font-stretch:125%;text-transform:uppercase;
  color:var(--cinza);line-height:.9;letter-spacing:-.01em;font-size:clamp(3rem,13vw,10rem);transition:color .3s}
@@ -94,14 +96,51 @@ a.titulo-img:hover,a.titulo-img:focus-visible{background-color:var(--inverso)}
 @media (hover:none){.card .titulo{opacity:1;background:linear-gradient(to top,rgba(0,0,0,.55),transparent 45%);place-items:end start;text-align:left;padding:5%;font-size:1.1rem}}
 
 /* PROJETO INDIVIDUAL */
-.proj-topo{display:flex;flex-wrap:wrap;gap:12px 60px;margin:40px 0 50px;font-size:1.2rem;color:var(--cinza-texto)}
-.proj-topo strong{display:block;color:var(--tinta);font-weight:500}
-.proj-desc{max-width:62ch;font-size:1.35rem;line-height:1.5;font-weight:300;margin-bottom:60px}
 .proj-imgs{display:grid;gap:24px}
 .proj-imgs img{width:100%;display:block;background:var(--placeholder)}
+.proj-info{margin-top:70px}
+.proj-topo{display:flex;flex-wrap:wrap;gap:12px 60px;margin:0 0 30px;font-size:1.2rem;color:var(--cinza-texto)}
+.proj-topo strong{display:block;color:var(--tinta);font-weight:500}
+.proj-desc{max-width:62ch;font-size:1.35rem;line-height:1.5;font-weight:300;white-space:pre-line}
+.proj-desc a,.proj-topo a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.proj-desc a:hover,.proj-topo a:hover{color:var(--verde)}
 .proj-nav{display:flex;justify-content:space-between;margin:80px 0 0;padding-top:24px;border-top:1px solid var(--cinza);font-size:1.3rem}
 .proj-nav a{color:var(--cinza-texto)}.proj-nav a:hover{color:var(--inverso)}
 .vazio{color:var(--cinza-texto);font-size:1.3rem;margin-top:60px}
 
 @media (max-width:640px){.player{right:0;top:10px}.nav{padding:18px 12px;font-size:.85rem}.nav .logo{width:110px}.nav-dir{gap:12px}.contato-grid{grid-template-columns:1fr;font-size:1.4rem}.nav-dir{gap:18px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+
+/* PLANOS DE FUNDO — o ícone do cabeçalho abre um menu com as opções (e "Normal").
+   Com fundo ativo, textos e ícones ficam brancos com efeito de inversão (difference):
+   onde o fundo é escuro o texto fica claro, onde é claro o texto fica escuro. */
+:root[data-fundo]{color-scheme:light;--cinza:#d0d0d0;--cinza-texto:#d0d0d0;--tinta:#fff;--inverso:#fff;--verde:#fff}
+:root[data-fundo] body{background:transparent}
+:root[data-fundo] .nav{background:transparent}
+:root[data-fundo] .tema{display:none}
+:root[data-fundo] body::before{content:"";position:fixed;inset:0;z-index:-1;background-size:cover;background-repeat:no-repeat;background-position:center}
+:root[data-fundo="1"] body::before{background-image:url(img/fundo-1.jpg)}
+:root[data-fundo] .nav,
+:root[data-fundo] .hero-img,
+:root[data-fundo] .titulo-img,
+:root[data-fundo] .gigante,
+:root[data-fundo] .contato,
+:root[data-fundo] .proj-info,
+:root[data-fundo] .proj-nav,
+:root[data-fundo] .player:not(.aberto){mix-blend-mode:difference}
+:root[data-fundo] .proj-desc a:hover,:root[data-fundo] .proj-topo a:hover{opacity:.6}
+
+/* menu de opções de fundo (fica fora do cabeçalho para não ser invertido) */
+.fundos-menu{position:fixed;top:74px;left:18px;z-index:15;display:flex;flex-wrap:wrap;gap:8px;padding:10px;max-width:calc(100vw - 36px);
+ background:rgba(255,255,255,.82);color:#111;border-radius:18px;-webkit-backdrop-filter:blur(24px) saturate(1.5);backdrop-filter:blur(24px) saturate(1.5);box-shadow:0 14px 34px rgba(0,0,0,.18);
+ opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s,transform .2s,visibility 0s .2s}
+.fundos-menu.aberto{opacity:1;visibility:visible;transform:none;transition:opacity .2s,transform .2s}
+:root[data-tema="escuro"] .fundos-menu{background:rgba(28,28,28,.82);color:#eee}
+.fundo-op{width:64px;height:64px;padding:0;border:0;border-radius:11px;cursor:pointer;background:#e9e9e9 center/cover no-repeat;color:inherit;font:500 .78rem var(--corpo);
+ box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);transition:transform .15s}
+.fundo-op:hover,.fundo-op:focus-visible{transform:scale(1.07)}
+.fundo-op[aria-pressed="true"]{box-shadow:0 0 0 2px #fff,0 0 0 4px #111}
+:root[data-tema="escuro"] .fundo-op[aria-pressed="true"]{box-shadow:0 0 0 2px #111,0 0 0 4px #eee}
+.fundo-normal{display:grid;place-items:center;background:#f4f4f4;color:#111}
+:root[data-tema="escuro"] .fundo-normal{background:#2a2a2a;color:#eee}
+.fundo-op[data-fundo="1"]{background-image:url(img/fundo-1-mini.jpg)}
