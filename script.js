@@ -174,7 +174,7 @@ function iniciarPagina() {
 
   const grade = document.getElementById("grade");
   if (grade) {
-    const ESPACOS = 10; // quantidade de quadrados na página de projetos
+    const ESPACOS = Math.max(10, Math.ceil(PROJETOS.length / 3) * 3); // quantidade de quadrados na página de projetos
     const cards = PROJETOS.slice(0, ESPACOS).map(p => `
       <a class="card" href="projeto.html?id=${encodeURIComponent(p.id)}" aria-label="${p.titulo}">
         <div class="capa"><img src="${p.capa}" alt="Capa do projeto ${p.titulo}" loading="lazy" onerror="this.remove()"></div>

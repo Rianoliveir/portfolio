@@ -14,7 +14,7 @@ const PROJETOS = [
   },
   {
     id: "grafico-drop-verao1",
-    titulo: "Grafico para DROP/VERÃO1",
+    titulo: "Grafico para HIGH COMPANY",
     ano: "2026",
     cliente: "HIGH COMPANY",
     descricao: "Grafico desenvolvido para estampa de camiseta para HIGH COMPANY. Dir Criativa @patylinos",
@@ -23,7 +23,7 @@ const PROJETOS = [
   },
   {
     id: "grafico-drop-high-cia",
-    titulo: "Grafico para DROP/HIGH CIA",
+    titulo: "Grafico para HIGH COMPANY",
     ano: "2026",
     cliente: "HIGH COMPANY",
     descricao: "Grafico desenvolvido para estampa de camiseta para HIGH COMPANY. Dir Criativa @patylinos",
@@ -97,6 +97,24 @@ const PROJETOS = [
     descricao: ".",
     capa: "img/dsm1.jpg",
     imagens: ["img/dsm1.jpg", "img/dsm22.jpg", "img/dsm33.jpg"] // ex.: ["img/projeto10-a.jpg", "img/projeto10-b.jpg"]
+  },
+  {
+    id: "BucketHat para HIGH COMPANY",
+    titulo: "BucketHat para HIGH COMPANY",
+    ano: "2026",
+    cliente: "HIGH COMPANY",
+    descricao: "Desenvolvimento de produto para HIGH COMPANY. Dir Criativa @patylinos Gráfico: @kiqillus",
+    capa: "img/bucket.jpeg",
+    imagens: ["img/bucket.jpeg", "img/spike.png", "img/Lookbookbucket.jpeg"] // ex.: ["img/projeto10-a.jpg", "img/projeto10-b.jpg"]
+  },
+ {
+    id: "grafico-drop-verao2",
+    titulo: "Grafico para HIGH COMPANY",
+    ano: "2026",
+    cliente: "HIGH COMPANY",
+    descricao: "Grafico desenvolvido para estampa de camiseta para HIGH COMPANY. Dir Criativa @patylinos",
+    capa: "img/flor.png",
+    imagens: ["img/flor.png", "img/camisasflor.png"] // ex.: ["img/projeto2-a.png", "img/projeto2-b.png"]
   }
 ];
 
