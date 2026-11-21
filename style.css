@@ -118,4 +118,20 @@ html[data-fundo] .nav{background:transparent}
 .fundo-op[aria-pressed="true"]{border-color:var(--inverso)}
 .fundo-op[data-fundo="1"]{background-image:url("img/fundo-1-mini.jpg")}
 .fundo-normal{background:var(--placeholder);color:var(--tinta);font:500 .72rem var(--corpo)}
-@media (max-width:640px){.fundos-menu{top:62px;left:162px}}
+
+/* ===== CELULAR: barra do topo compacta (tema + ícones à esquerda, logo à direita, player no canto) ===== */
+@media (max-width:640px){
+  .nav{grid-template-columns:auto 1fr;padding:18px 12px}
+  .nav .logo{justify-self:end;width:96px;margin-right:52px}
+  .nav-esq{gap:12px}
+  .nav-dir{gap:12px}
+  .nav .icone{width:32px}
+  .tema{width:60px;height:30px}
+  .tema .bola{top:3px;left:3px;width:24px;height:24px}
+  :root[data-tema="escuro"] .tema .bola{transform:translateX(30px)}
+  .tema .ic{top:6px;width:16px;height:16px}
+  .tema .lua{right:8px}
+  .tema .sol{left:8px}
+  .fundos-menu{top:58px;left:128px}
+}
+@media (max-width:340px){.nav .logo{width:80px}}
