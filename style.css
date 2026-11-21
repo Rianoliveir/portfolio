@@ -105,3 +105,17 @@ a.titulo-img:hover,a.titulo-img:focus-visible{background-color:var(--inverso)}
 
 @media (max-width:640px){.player{right:0;top:10px}.nav{padding:18px 12px;font-size:.85rem}.nav .logo{width:110px}.nav-dir{gap:12px}.contato-grid{grid-template-columns:1fr;font-size:1.4rem}.nav-dir{gap:18px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+
+/* ===== PLANO DE FUNDO (botão da nav + menu + imagem) ===== */
+.nav button.icone{background:none;border:0;padding:0;cursor:pointer;pointer-events:auto}
+html[data-fundo="1"] body{background:transparent}
+html[data-fundo="1"] body::before{content:"";position:fixed;inset:0;z-index:-1;background:url("img/fundo-1.jpg") center/cover no-repeat}
+html[data-fundo] .nav{background:transparent}
+.fundos-menu{position:fixed;top:68px;left:178px;z-index:11;display:none;gap:10px;padding:10px;background:var(--bg);border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.2)}
+.fundos-menu.aberto{display:flex}
+.fundo-op{width:60px;height:60px;border:2px solid transparent;border-radius:10px;cursor:pointer;background:center/cover no-repeat;transition:transform .2s,border-color .2s}
+.fundo-op:hover{transform:scale(1.06)}
+.fundo-op[aria-pressed="true"]{border-color:var(--inverso)}
+.fundo-op[data-fundo="1"]{background-image:url("img/fundo-1-mini.jpg")}
+.fundo-normal{background:var(--placeholder);color:var(--tinta);font:500 .72rem var(--corpo)}
+@media (max-width:640px){.fundos-menu{top:62px;left:162px}}

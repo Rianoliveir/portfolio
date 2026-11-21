@@ -31,8 +31,7 @@ if (botaoFundo && menuFundo) {
     const n = o.dataset.fundo;
     if (n) raiz.dataset.fundo = n; else delete raiz.dataset.fundo;
     try { n ? localStorage.setItem("fundo", n) : localStorage.removeItem("fundo"); } catch (e) {}
-    marcar();
-    abrir(false);
+    marcar(); // o menu continua aberto; fecha só ao clicar fora, no ícone de novo ou com Esc
   }));
   document.addEventListener("click", e => {
     if (menuFundo.classList.contains("aberto") && !menuFundo.contains(e.target) && !botaoFundo.contains(e.target)) abrir(false);
